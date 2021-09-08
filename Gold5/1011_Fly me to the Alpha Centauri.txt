@@ -1,0 +1,41 @@
+n = int(input())
+
+x_point=[]
+y_point=[]
+a = [0,]
+
+for i in range(n):
+    x ,y = map(int, input().split())
+    x_point.append(x)
+    y_point.append(y)
+    
+
+
+for i in range(50000):
+    a.append(a[i]+i+1)
+    
+for i in range(n):
+    diff = y_point[i]-x_point[i]
+    
+    temp_step=0
+    temp_move=0
+    
+    while diff>0:
+        if diff>=a[temp_move+1]:
+            
+            diff -= temp_move+1
+            temp_move+=1
+            temp_step+=1
+            
+        elif diff >= a[temp_move]:
+            diff -= temp_move
+            temp_step+=1
+            
+        else:
+            diff -= temp_move - 1
+            temp_move-=1
+            temp_step+=1
+        
+        
+    print(temp_step)
+    
