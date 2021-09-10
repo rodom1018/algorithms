@@ -1,0 +1,16 @@
+
+
+[파이썬 특이한 문장 모음]
+
+<print 개행문자 대신> 
+print(i, end= ' ')
+
+<input 깔끔하게 받는 문장>
+n, k  = map(int, input().split)
+array.append(list(map(int, input().split))))
+
+<배열 선언>
+count = [0] * (max(array) + 1)
+
+<정렬>
+array = sorted(array, reverse=True)
