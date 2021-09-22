@@ -1,0 +1,10 @@
+
+string_num = input()
+list = []
+for i in range(len(string_num)):
+    list.append(int(string_num[i]))
+    
+list.sort(reverse=True)
+
+for i in range(len(list)):
+    print(list[i], end="")

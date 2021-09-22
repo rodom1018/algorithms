@@ -1,0 +1,83 @@
+from dataclasses import dataclass 
+
+@dataclass 
+class Data: 
+    x: int = None
+    y: int = None
+    z: int = None
+
+n = int(input())
+coord = []
+for i in range(n):
+    x,y,z = map(int, input().split())
+    coord.append(Data(x,y,z))
+##############################################################################
+def swap(tree, b):
+    coord[tree], coord[b] = coord[b], coord[tree]
+    
+    temp_max_x =-1
+    temp_max_y =-1
+    temp_min_x =987654321
+    temp_min_y =987654321
+    
+    temp_max_x_index = -1
+    temp_max_y_index = -1
+    temp_min_x_index = -1
+    temp_min_y_index = -1
+    
+    #안자른 나무의 최대 최소 x,y 값 찾기
+    for j in range(tree+1, n):
+        if coord[j].x> temp_max_x:
+            temp_max_x=coord[j].x
+            temp_max_x_index = j
+            
+        if coord[j].y> temp_max_y:
+            temp_max_y=coord[j].y
+            temp_max_y_index = j
+            
+        if coord[j].x< temp_min_x:
+            temp_min_x=coord[j].x
+            temp_min_x_index = j
+            
+        if coord[j].y< temp_min_y:
+            temp_min_y=coord[j].y
+            temp_min_y_index = j
+            
+    x_diff = temp_max_x-temp_min_x
+    y_diff = temp_max_y-temp_min_y
+    length = 987
+    if x_diff ==0 and y_diff == 0 :
+        length = 0
+    elif x_diff ==0:
+        length = y_diff
+    elif y_diff ==0:
+        length = x_diff
+    else:
+        length =(x_diff+y_diff)*2
+    
+    #쓸 수 있는 나무의 수 세기.
+    use_tree = 0
+    for i in range(tree+1):
+        use_tree = use_tree + coord[i].z
+    
+    if length<=use_tree:
+        print(tree+1)
+        exit(0)
+    else:
+        coord[tree], coord[b] = coord[b], coord[tree]
+        return length-use_tree
+#######################################################################################    
+for i in range(n):
+    min_cost = 987654
+    temp_index=-1
+    
+    for j in range(i+1, n):
+        temp_cost = swap(i,j)
+        
+        if temp_cost < min_cost:
+            min_cost =temp_cost
+            temp_index = j
+            
+    coord[temp_index], coord[i] = coord[i] , coord[temp_index]
+
+#################################################################

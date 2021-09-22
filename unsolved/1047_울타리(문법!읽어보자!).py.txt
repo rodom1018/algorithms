@@ -1,0 +1,57 @@
+from dataclasses import dataclass 
+import operator
+
+@dataclass 
+class Data: 
+    x: int = None
+    y: int = None
+    z: int = None
+
+n = int(input())
+coord = []
+for i in range(n):
+    x,y,z = map(int, input().split())
+    coord.append(Data(x,y,z))
+
+min_count = 987654321
+for x_start in range(1,41):
+    for y_start in range(1,41):
+        for x_end in range(x_start, 41):
+            for y_end in range(y_start, 41):
+                inside_tree = []
+                use_tree = 0
+                temp_count = 0
+                for i in range(n):
+                    #직사각형 에 있는 나무
+                    if coord[i].x >=x_start and coord[i].x<=x_end and coord[i].y>=y_start and coord[i].y<=y_end:
+                        inside_tree.append(coord[i])
+                        continue
+                    
+                    #직사각형 바깥에 있는 나무
+                    temp_count+=1
+                    use_tree += coord[i].z
+                
+
+                
+                x_width = x_end - x_start
+                y_width = y_end - y_start
+                length = (x_width + y_width)*2
+                if len(inside_tree) !=0:
+                    inside_tree.sort(key=operator.attrgetter('z'),reverse=True)
+
+                del_index=0
+                while True:
+                    if use_tree >=length: break
+                    if len(inside_tree) ==0 : break
+                    if del_index == len(inside_tree): break
+                    if temp_count >=min_count: break
+                    temp_count+=1
+                    use_tree += inside_tree[del_index].z
+                    del_index+=1
+                    
+                if temp_count < min_count:
+                    min_count = temp_count
+
+
+print(min_count)
+    

@@ -1,0 +1,25 @@
+n=int(input())
+x=[]
+y=[]
+rank = []
+for i in range(n):
+    temp_x,temp_y=map(int,input().split())
+    x.append(temp_x)
+    y.append(temp_y)
+
+for i in range(n):
+    
+    temp_rank = 1
+    
+    for j in range(n):
+        
+        if i ==j :continue
+        
+        if x[i] < x[j] and y[i] < y[j]:
+            temp_rank +=1
+    
+    rank.append(temp_rank)
+            
+for i in range(len(rank)):
+    print(rank[i], end=" ")
+    

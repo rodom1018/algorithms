@@ -1,0 +1,15 @@
+n = int(input())
+count=0
+result = -1
+for i in range(10000000):
+    if count == n : 
+        result = i -1 
+        break
+    
+    temp_str = str(i)
+    
+    if temp_str.find("666") >=0: 
+        count+=1
+
+
+print(result)

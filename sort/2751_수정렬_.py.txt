@@ -1,0 +1,13 @@
+from sys import stdin
+
+n = int(stdin.readline())
+
+list =  [0] * n
+
+for i in range(n):
+    list[i] = int(stdin.readline())
+
+new_list = sorted(list)
+
+for i in range(n):
+    print(new_list[i])

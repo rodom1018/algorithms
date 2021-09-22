@@ -1,0 +1,42 @@
+from sys import stdin
+n = int(stdin.readline())
+simplify_list = []
+count_list = [0] * 8001
+
+sum=0
+for i in range(n):
+	temp_int = int(stdin.readline())
+	simplify_list.append(temp_int)
+	sum+=temp_int
+	count_list[temp_int +4000] +=1
+    
+maximum = max(count_list)
+index_mode = []
+for i in range(8001):
+    if count_list[i] == maximum:
+        index_mode.append(i)
+
+index_mode.sort()
+
+if len(index_mode) >1:
+    third = index_mode[1] - 4000
+else:
+    third = index_mode[0] - 4000
+
+#작은거에서 큰순
+simplify_list.sort()
+
+#첫번째 출력값
+first = round(sum / n)
+
+#두번째 출력값
+second = simplify_list[n//2]
+    
+#네번째 출력값
+end = int(len(simplify_list)) - 1
+fourth = simplify_list[end] - simplify_list[0]
+
+print(first)
+print(second)
+print(third)
+print(fourth)
