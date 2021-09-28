@@ -1,0 +1,21 @@
+from dataclasses import dataclass 
+import operator
+n = int(input())
+
+@dataclass 
+class Product: 
+    x:int =None
+    y:int =None
+    
+coord = []
+for i in range(n):
+    temp = Product()
+    temp.x, temp.y = map(int, input().split())
+    coord.append(temp)
+
+sdict= sorted(coord, key= lambda temp : (temp.x, temp.y))
+
+for i in range(n):
+    print(str(sdict[i].x)+" "+str(sdict[i].y))
+
+    
