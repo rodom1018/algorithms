@@ -14,7 +14,7 @@ for i in range(k+1):
         if i - now_coin >= 0:
             dp[i] = min(dp[i], dp[i-now_coin] + 1)
 
-print(dp)
+#print(dp)
 if dp[k] == 999999:
     print(-1)
 else:
