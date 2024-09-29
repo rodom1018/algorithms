@@ -8,8 +8,8 @@ for i in range(N):
     deadline, cup = map(int, sys.stdin.readline().split())
     cup_list.append((deadline, cup))
 
-cup_list.sort(key=lambda x : (x[0], -x[1]))
-
+#cup_list.sort(key=lambda x : (x[0], -x[1]))
+cup_list.sort()
 result = 0 
 for i in range(N):
     now_deadline = cup_list[i][0]
