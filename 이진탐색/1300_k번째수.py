@@ -4,7 +4,7 @@ N = int(sys.stdin.readline())
 k = int(sys.stdin.readline())
 
 start= 1
-end = N*N # k로 해도 됨
+end = N*N # k로 해도 됨(k번째 요소는 k 보다 작음.)
 result = -1
 
 while start <= end:
