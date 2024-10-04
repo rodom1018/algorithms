@@ -2,6 +2,7 @@ import sys
 
 N, E = map(int, sys.stdin.readline().split())
 my_map = [ [] for i in range(N+1)]
+INF = 987654321
 
 for i in range(E):
     a, b, c = map( int, sys.stdin.readline().split() )
@@ -12,7 +13,7 @@ c1, c2 = map(int, sys.stdin.readline().split())
 
 def get_smallest(visited, cost):
     temp = -1 
-    temp_value = 987654321
+    temp_value = INF
 
     for i in range(1,N+1):
         # 아직 방문 안했으면서, 최소한의 비용의 노드 찾기
@@ -27,7 +28,7 @@ def dijkstra(start):
     
     #초기화
     visited = [ 0 for i in range(N+1)]
-    cost = [ 987654321 for i in range(N+1)]
+    cost = [ INF for i in range(N+1)]
     cost[start] = 0
 
     for a in range(N):
@@ -51,9 +52,9 @@ result1 = cost1[c1] + cost2[c2] + cost3[N]
 #1 - c2 - c1 - dest
 result2 = cost1[c2] + cost3[c1] + cost2[N]
 
-if result1 >= 987654321 and result2 >= 987654321:
+result = min(result1, result2)
+
+if result >= INF:
     print("-1")
-elif result1 < result2:
-    print(result1)
 else:
-    print(result2)
+    print(result)
