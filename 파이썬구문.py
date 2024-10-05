@@ -1,3 +1,5 @@
+my_list = [2,4,6,8,10]
+print(my_list[1:6])
 #문자열을 반대로 출력하기
 temp = "abbbbbca"
 print(temp)
