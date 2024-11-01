@@ -1,7 +1,7 @@
 import sys
 
-N = int(sys.stdin.readline()) + 2
-expr = "0+" + sys.stdin.readline().strip()
+N = int(sys.stdin.readline())
+expr = sys.stdin.readline().strip()
 result = -9876543210
 
 def calculate(a,b,c):
@@ -34,5 +34,5 @@ def dfs(temp_result, index):
     # 3 + 8 * 7
     dfs(calculate(temp_result, expr[index], expr[index+1]), index+2)
 
-dfs(0, 1)
+dfs(int(expr[0]), 1)
 print(result)
