@@ -63,10 +63,6 @@ class Main{
                     //상어 인 경우
                     if(memo[r][c][2] == k){
                         int now_direction = next_direction(r, c);
-                        //System.out.println(r);
-                        //System.out.println(c);
-                        //System.out.println(now_direction);
-                        //System.out.println("====");
 
                         //더 어른 상어가 있으면 격자 밖으로 나가버리기
                         if(new_memo[r+dr[now_direction]][c+dc[now_direction]][0] != 0){
